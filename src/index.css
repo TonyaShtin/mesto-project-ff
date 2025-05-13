@@ -10,14 +10,3 @@
 @import url('./blocks/popup/popup.css');
 @import url('./blocks/popup/_is-animated/popup_is-animated.css');
 @import url('./blocks/popup/_is-opened/popup_is-opened.css');
-
-.popup {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.popup_opened {
-  opacity: 1;
-  visibility: visible;
-}
