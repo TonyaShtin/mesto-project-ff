@@ -1,7 +1,7 @@
 //Функции для работы с карточками
 
 // Функция создания карточки
-export function createCard(cardData, handleCardClick, handleDeleteCard = null) {
+export function createCard(cardData, handleCardClick, handleDeleteCard, handleLikeCard) {
   const cardTemplate = document.querySelector('#card-template').content;
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
 
@@ -16,21 +16,18 @@ export function createCard(cardData, handleCardClick, handleDeleteCard = null) {
 
   // Слушатель на изображение
   cardImage.addEventListener('click', () => {
-    handleCardClick(cardData.name, cardData.link);
+    handleCardClick(cardData);
   });
 
   // Слушатель лайка
   likeButton.addEventListener('click', () => {
-    likeButton.classList.toggle('card__like-button_active');
-  });
+  handleLikeCard(likeButton);
+});
+
 
   // Слушатель удаления
   deleteButton.addEventListener('click', () => {
-    if (handleDeleteCard) {
       handleDeleteCard(cardElement);
-    } else {
-      cardElement.remove();
-    }
   });
 
   return cardElement;
