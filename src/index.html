@@ -19,7 +19,7 @@
         <section class="profile page__section">
           <div
             class="profile__image"
-            style="background-image: url('<%= require('./images/my_avatar.jpg') %>');"
+            style="background-image: url('<%= require('./images/my_avatar.jpg') %>')"
           ></div>
           <div class="profile__info">
             <h1 class="profile__title">Тоня Штин</h1>
@@ -41,48 +41,87 @@
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__form" name="edit-profile">
+          <form class="popup__form" name="edit-profile" novalidate>
             <input
               type="text"
               name="name"
               class="popup__input popup__input_type_name"
               placeholder="Имя"
+              id="name-input"
+              minlength="2"
+              maxlength="40"
+              pattern="[A-Za-zА-Яа-яЁё]+([\s\-][A-Za-zА-Яа-яЁё]+)*"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               required
             />
+            <span class="name-input-error popup__error"></span>
             <input
               type="text"
               name="description"
               class="popup__input popup__input_type_description"
               placeholder="Занятие"
+              id="description-input"
+              minlength="2"
+              maxlength="200"
+              pattern="[A-Za-zА-Яа-яЁё]+([\s\-][A-Za-zА-Яа-яЁё]+)*"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               required
             />
+            <span class="description-input-error popup__error"></span>    
             <button type="submit" class="button popup__button">
               Сохранить
             </button>
           </form>
         </div>
       </div>
-
+      <div class="popup popup_type_edit-avatar">
+        <div class="popup__content">
+          <button type="button" class="popup__close"></button>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <form class="popup__form" name="edit-avatar" novalidate>
+            <input
+              type="url"
+              name="avatar"
+              class="popup__input popup__input_type_url"
+              placeholder="Ссылка на картинку"
+              required
+              id="avatar-input"
+            />
+            <span class="avatar-input-error popup__error"></span>
+            <button type="submit" class="button popup__button">
+              Сохранить
+            </button>
+          </form>
+        </div>
+      </div>
       <!-- Попап "Новое место" -->
       <div class="popup popup_type_new-card">
         <div class="popup__content">
           <button type="button" class="popup__close"></button>
           <h3 class="popup__title">Новое место</h3>
-          <form class="popup__form" name="new-place">
+          <form class="popup__form" name="new-place" novalidate>
             <input
               type="text"
               name="place-name"
               class="popup__input popup__input_type_card-name"
               placeholder="Название"
+              id="place-name-input"
+              minlength="2"
+              maxlength="30"
+              pattern="[A-Za-zА-Яа-яЁё]+([\s\-][A-Za-zА-Яа-яЁё]+)*"
+              data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы"
               required
             />
+            <span class="place-name-input-error popup__error"></span>
             <input
               type="url"
               name="link"
               class="popup__input popup__input_type_url"
               placeholder="Ссылка на картинку"
+              id="link-input"
               required
             />
+            <span class="link-input-error popup__error"></span>
             <button type="submit" class="button popup__button">
               Сохранить
             </button>
@@ -94,7 +133,7 @@
       <div class="popup popup_type_image">
         <div class="popup__content popup__content_content_image">
           <button type="button" class="popup__close"></button>
-          <img class="popup__image" alt="Изображение в попапе" />
+          <img src="" alt="" class="popup__image"/>
           <p class="popup__caption"></p>
         </div>
       </div>
