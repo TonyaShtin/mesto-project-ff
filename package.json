@@ -1,11 +1,13 @@
 {
   "name": "mesto-project-ff",
   "version": "1.0.0",
-  "description": "",
+  "description": " Мой репозиторий: https://github.com/TonyaShtin/mesto-project-ff.git",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
-    "dev": "webpack serve --mode development"
+    "dev": "webpack serve --mode development",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,7 @@
   "bugs": {
     "url": "https://github.com/TonyaShtin/mesto-project-ff/issues"
   },
+  
   "homepage": "https://github.com/TonyaShtin/mesto-project-ff#readme",
   "devDependencies": {
     "@babel/core": "^7.26.10",
@@ -25,6 +28,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
     "cssnano": "^7.0.6",
+    "gh-pages": "^6.3.0",
     "html-webpack-plugin": "^5.6.3",
     "mini-css-extract-plugin": "^2.9.2",
     "postcss-loader": "^8.1.1",
