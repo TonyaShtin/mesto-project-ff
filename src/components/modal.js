@@ -12,13 +12,15 @@ export function closeModal(popup) {
   document.removeEventListener('keydown', handleEscClose);
 }
 
-// Обработчики на крестики
-document.querySelectorAll('.popup__close').forEach(closeBtn => {
-  closeBtn.addEventListener('click', () => {
-    const popup = closeBtn.closest('.popup');
-    if (popup) closeModal(popup);
+// Закрытие на крестики
+export function setCloseButtonListeners() {
+  document.querySelectorAll('.popup__close').forEach(closeBtn => {
+    closeBtn.addEventListener('click', () => {
+      const popup = closeBtn.closest('.popup');
+      if (popup) closeModal(popup);
+    });
   });
-});
+}
 
 // Закрытие попапа клавишей Escape
 function handleEscClose(evt) {

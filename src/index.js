@@ -1,7 +1,6 @@
 import './index.css';
-import { initialCards } from './components/cards.js';
 import { createCard } from './components/card.js';
-import { openModal, closeModal, setOverlayCloseListeners } from './components/modal.js';
+import { openModal, closeModal, setOverlayCloseListeners, setCloseButtonListeners } from './components/modal.js';
 import { enableValidation, clearValidation } from './components/validation.js';
 import {
   getUserInfo,
@@ -11,6 +10,7 @@ import {
   createNewCard,
 } from './components/api.js';
 
+document.addEventListener('DOMContentLoaded', () => {
 //Поиск DOM-элементов на странице
 // Элементы попапов
 const profilePopup = document.querySelector('.popup_type_edit');
@@ -179,7 +179,7 @@ closeButtons.forEach((button) => {
 });
 
 // Установка обработчиков закрытия по оверлею
-setOverlayCloseListeners([profilePopup, cardPopup, imagePopup]);
+setOverlayCloseListeners(document.querySelectorAll('.popup'));
 
 // Добавление начальных карточек
 Promise.all([getUserInfo(), getInitialCards()])
@@ -187,18 +187,14 @@ Promise.all([getUserInfo(), getInitialCards()])
     userId = userData._id;
     profileTitle.textContent = userData.name;
     profileDescription.textContent = userData.about;
-    profileImage.style.backgroundImage = `url('${userData.avatar}')`; 
+    profileImage.style.backgroundImage = `url('${userData.avatar}')`;
 
-    initialCards.forEach((cardData) => {
-    const card = createCard(cardData, handleCardClick, handleDeleteCard, handleLikeCard, userId);
-    placesList.append(card);
+    cards.forEach((cardData) => {
+      const card = createCard(cardData, handleCardClick, handleDeleteCard, handleLikeCard, userId);
+      placesList.append(card);
     });
   })
   .catch(console.error);
 
-
-
-
-
-
-
+setCloseButtonListeners();
+});
