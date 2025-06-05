@@ -5,12 +5,18 @@ import { removeCard, likeCard, unLikeCard } from "./api";
 const cardTemplate = document.querySelector("#card-template").content;
 
 // Функция создания карточки
-export function createCard(cardData, handleCardClick, handleDeleteCard, handleLikeCard, userId) {
-  const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
-  const cardImage = cardElement.querySelector('.card__image');
-  const cardTitle = cardElement.querySelector('.card__title');
-  const likeButton = cardElement.querySelector('.card__like-button');
-  const deleteButton = cardElement.querySelector('.card__delete-button');
+export function createCard(
+  cardData,
+  handleCardClick,
+  handleDeleteCard,
+  handleLikeCard,
+  userId
+) {
+  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardTitle = cardElement.querySelector(".card__title");
+  const likeButton = cardElement.querySelector(".card__like-button");
+  const deleteButton = cardElement.querySelector(".card__delete-button");
   const likeCounter = cardElement.querySelector(".card__like-counter");
 
   cardImage.src = cardData.link;
@@ -19,11 +25,11 @@ export function createCard(cardData, handleCardClick, handleDeleteCard, handleLi
   likeCounter.textContent = cardData.likes.length;
 
   // Слушатель на изображение
-  cardImage.addEventListener('click', () => {
+  cardImage.addEventListener("click", () => {
     handleCardClick(cardData);
   });
 
-// Проверяем владельца карточки
+  // Проверяем владельца карточки
   if (cardData.owner._id === userId) {
     deleteButton.addEventListener("click", (evt) => {
       handleDeleteCard(evt, cardData._id);
