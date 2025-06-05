@@ -1,5 +1,5 @@
 import './index.css';
-import { createCard } from './components/card.js';
+import { createCard, handleDeleteCard, handleLikeCard } from './components/card.js';
 import { openModal, closeModal, setOverlayCloseListeners, setCloseButtonListeners } from './components/modal.js';
 import { enableValidation, clearValidation } from './components/validation.js';
 import {
@@ -134,15 +134,6 @@ function handleAvatarFormSubmit(evt) {
   .finally(() => renderLoading(avatarSubmitButton, false));
 }
 
-// Обработчик лайка
-function handleLikeCard(button) {
-  button.classList.toggle('card__like-button_is-active');
-}
-
-// Обработчик удаления карточки
-function handleDeleteCard(cardElement) {
-  cardElement.remove();
-}
 
 // Открытие формы редактирования профиля
 profileEditButton.addEventListener('click', () => {
